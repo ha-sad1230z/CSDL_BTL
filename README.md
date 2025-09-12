@@ -23,28 +23,28 @@ Trong bối cảnh ngành du lịch – khách sạn ngày càng phát triển, 
 
 - Hệ thống quản lý khách sạn và khách đặt phòng sẽ bao gồm các nghiệp vụ sau:
 - KhachHang: lưu thông tin khách.
-  KhachID int identity(1,1) primary key,
-  CCCD nvarchar(12) unique not null,
-  Hoten nvarchar(100) not null,
-  SDT nvarchar(10) not null,
-  email nvarchar(100),
-  diachi nvarchar(100)
+  - KhachID int identity(1,1) primary key,
+  - CCCD nvarchar(12) unique not null,
+  - Hoten nvarchar(100) not null,
+  - SDT nvarchar(10) not null,
+  - email nvarchar(100),
+  - diachi nvarchar(100)
   
 - Phong: quản lý loại phòng, tình trạng, giá.
-  PhongID int identity(1,1) primary key,
-  sophong nvarchar(10) unique not null,
-  LoaiPhong NVARCHAR(20) CHECK (LoaiPhong IN (N'Đơn', N'Đôi', N'VIP')),
-  TinhTrang NVARCHAR(20) CHECK (TinhTrang IN (N'Còn trống', N'Đã đặt', N'Đang dọn dẹp')),
-  GiaPhong DECIMAL(9,2) NOT NULL
+  - PhongID int identity(1,1) primary key,
+  - sophong nvarchar(10) unique not null,
+  - LoaiPhong NVARCHAR(20) CHECK (LoaiPhong IN (N'Đơn', N'Đôi', N'VIP')),
+  - TinhTrang NVARCHAR(20) CHECK (TinhTrang IN (N'Còn trống', N'Đã đặt', N'Đang dọn dẹp')),
+  - GiaPhong DECIMAL(9,2) NOT NULL
   
 - DatPhong: gắn khách hàng với phòng, có ngày nhận/trả.
-  DatPhongID INT IDENTITY(1,1) PRIMARY KEY,
-  KhachHangID INT FOREIGN KEY REFERENCES KhachHang(KhachHangID),
-  PhongID INT FOREIGN KEY REFERENCES Phong(PhongID),
-  NgayNhan DATE NOT NULL,
-  NgayTra DATE NOT NULL,
-  SoNguoi INT,
-  YeuCauDacBiet NVARCHAR(200)
+  - DatPhongID INT IDENTITY(1,1) PRIMARY KEY,
+  - KhachHangID INT FOREIGN KEY REFERENCES KhachHang(KhachHangID),
+  - PhongID INT FOREIGN KEY REFERENCES Phong(PhongID),
+  - NgayNhan DATE NOT NULL,
+  - NgayTra DATE NOT NULL,
+  - SoNguoi INT,
+  - YeuCauDacBiet NVARCHAR(200)
   
 - DichVu: các dịch vụ khách sạn cung cấp.
   DichVuID INT IDENTITY(1,1) PRIMARY KEY,
