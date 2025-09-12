@@ -21,15 +21,54 @@ Trong bối cảnh ngành du lịch – khách sạn ngày càng phát triển, 
 
 ## 🏨 Kịch bản thế giới thực
 
-Hệ thống quản lý khách sạn và khách đặt phòng sẽ bao gồm các nghiệp vụ sau:
-
-- **Khách hàng:** đăng ký thông tin, đặt phòng, sử dụng dịch vụ, thanh toán.
-- **Phòng:** phân loại phòng (đơn, đôi, VIP), quản lý tình trạng phòng (còn trống, đã đặt, đang dọn dẹp).
-- **Đặt phòng:** ghi nhận thông tin đặt phòng (ngày nhận, ngày trả, số lượng người, yêu cầu đặc biệt).
-- **Dịch vụ:** lưu trữ thông tin dịch vụ bổ sung (ăn sáng, spa, đưa đón sân bay…).
-- **Hóa đơn:** tạo hóa đơn chi tiết cho từng khách hàng dựa trên đặt phòng và dịch vụ sử dụng.
-- **Nhân viên:** quản lý thông tin nhân viên và phân quyền theo chức vụ.
-
+- Hệ thống quản lý khách sạn và khách đặt phòng sẽ bao gồm các nghiệp vụ sau:
+- KhachHang: lưu thông tin khách.
+  KhachID int identity(1,1) primary key,
+  CCCD nvarchar(12) unique not null,
+  Hoten nvarchar(100) not null,
+  SDT nvarchar(10) not null,
+  email nvarchar(100),
+  diachi nvarchar(100)
+  
+- Phong: quản lý loại phòng, tình trạng, giá.
+  PhongID int identity(1,1) primary key,
+  sophong nvarchar(10) unique not null,
+  LoaiPhong NVARCHAR(20) CHECK (LoaiPhong IN (N'Đơn', N'Đôi', N'VIP')),
+  TinhTrang NVARCHAR(20) CHECK (TinhTrang IN (N'Còn trống', N'Đã đặt', N'Đang dọn dẹp')),
+  GiaPhong DECIMAL(9,2) NOT NULL
+  
+- DatPhong: gắn khách hàng với phòng, có ngày nhận/trả.
+  DatPhongID INT IDENTITY(1,1) PRIMARY KEY,
+  KhachHangID INT FOREIGN KEY REFERENCES KhachHang(KhachHangID),
+  PhongID INT FOREIGN KEY REFERENCES Phong(PhongID),
+  NgayNhan DATE NOT NULL,
+  NgayTra DATE NOT NULL,
+  SoNguoi INT,
+  YeuCauDacBiet NVARCHAR(200)
+  
+- DichVu: các dịch vụ khách sạn cung cấp.
+  DichVuID INT IDENTITY(1,1) PRIMARY KEY,
+  TenDichVu NVARCHAR(100) NOT NULL,
+  Gia DECIMAL(9,2) NOT NULL
+  
+- SuDungDichVu: bảng trung gian để ghi khách đã dùng dịch vụ nào, số lượng.
+  SuDungID INT IDENTITY(1,1) PRIMARY KEY,
+  DatPhongID INT FOREIGN KEY REFERENCES DatPhong(DatPhongID),
+  DichVuID INT FOREIGN KEY REFERENCES DichVu(DichVuID),
+  SoLuong INT DEFAULT 1
+  
+- HoaDon: mỗi đặt phòng có 1 hóa đơn, tổng tiền có thể tính dựa trên phòng + dịch vụ.
+  HoaDonID INT IDENTITY(1,1) PRIMARY KEY,
+  DatPhongID INT FOREIGN KEY REFERENCES DatPhong(DatPhongID),
+  NgayLap DATE DEFAULT GETDATE(),
+  TongTien DECIMAL(9,2)
+  
+- NhanVien: lưu thông tin nhân viên và chức vụ.
+  NhanVienID INT IDENTITY(1,1) PRIMARY KEY,
+  CCCD nvarchar(12) unique not null,
+  HoTen NVARCHAR(100) NOT NULL,
+  ChucVu NVARCHAR(50),
+  SoDienThoai VARCHAR(20)
 ---
 
 ## 🛠️ Các chức năng chính
