@@ -32,7 +32,7 @@ Trong bối cảnh ngành du lịch – khách sạn ngày càng phát triển, 
   
 - Phong: quản lý loại phòng, tình trạng, giá.
   - PhongID int identity(1,1) primary key,
-  - sophong nvarchar(10) unique not null,
+  - sophong nvarchar(100) unique not null,
   - LoaiPhong NVARCHAR(20) CHECK (LoaiPhong IN (N'Đơn', N'Đôi', N'VIP')),
   - TinhTrang NVARCHAR(20) CHECK (TinhTrang IN (N'Còn trống', N'Đã đặt', N'Đang dọn dẹp')),
   - GiaPhong DECIMAL(9,2) NOT NULL
@@ -47,28 +47,28 @@ Trong bối cảnh ngành du lịch – khách sạn ngày càng phát triển, 
   - YeuCauDacBiet NVARCHAR(200)
   
 - DichVu: các dịch vụ khách sạn cung cấp.
-  DichVuID INT IDENTITY(1,1) PRIMARY KEY,
-  TenDichVu NVARCHAR(100) NOT NULL,
-  Gia DECIMAL(9,2) NOT NULL
+  - DichVuID INT IDENTITY(1,1) PRIMARY KEY,
+  - TenDichVu NVARCHAR(100) NOT NULL,
+  - Gia DECIMAL(9,2) NOT NULL
   
 - SuDungDichVu: bảng trung gian để ghi khách đã dùng dịch vụ nào, số lượng.
-  SuDungID INT IDENTITY(1,1) PRIMARY KEY,
-  DatPhongID INT FOREIGN KEY REFERENCES DatPhong(DatPhongID),
-  DichVuID INT FOREIGN KEY REFERENCES DichVu(DichVuID),
-  SoLuong INT DEFAULT 1
+  - SuDungID INT IDENTITY(1,1) PRIMARY KEY,
+  - DatPhongID INT FOREIGN KEY REFERENCES DatPhong(DatPhongID),
+  - DichVuID INT FOREIGN KEY REFERENCES DichVu(DichVuID),
+  - SoLuong INT DEFAULT 1
   
 - HoaDon: mỗi đặt phòng có 1 hóa đơn, tổng tiền có thể tính dựa trên phòng + dịch vụ.
-  HoaDonID INT IDENTITY(1,1) PRIMARY KEY,
-  DatPhongID INT FOREIGN KEY REFERENCES DatPhong(DatPhongID),
-  NgayLap DATE DEFAULT GETDATE(),
-  TongTien DECIMAL(9,2)
+  - HoaDonID INT IDENTITY(1,1) PRIMARY KEY,
+  - DatPhongID INT FOREIGN KEY REFERENCES DatPhong(DatPhongID),
+  - NgayLap DATE DEFAULT GETDATE(),
+  - TongTien DECIMAL(9,2)
   
 - NhanVien: lưu thông tin nhân viên và chức vụ.
-  NhanVienID INT IDENTITY(1,1) PRIMARY KEY,
-  CCCD nvarchar(12) unique not null,
-  HoTen NVARCHAR(100) NOT NULL,
-  ChucVu NVARCHAR(50),
-  SoDienThoai VARCHAR(20)
+  - NhanVienID INT IDENTITY(1,1) PRIMARY KEY,
+  - CCCD nvarchar(12) unique not null,
+  - HoTen NVARCHAR(100) NOT NULL,
+  - SoDienThoai VARCHAR(20),
+  - ChucVu NVARCHAR(50)
 ---
 
 ## 🛠️ Các chức năng chính
