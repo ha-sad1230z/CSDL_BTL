@@ -4,7 +4,7 @@
 
 Trong bối cảnh ngành du lịch – khách sạn ngày càng phát triển, việc quản lý khách sạn hiệu quả đóng vai trò quan trọng trong việc nâng cao chất lượng dịch vụ và tối ưu hóa nguồn lực. Trước kia, nhiều khách sạn còn quản lý thông tin bằng sổ sách hoặc file Excel thủ công, dễ xảy ra sai sót, thất lạc dữ liệu, khó khăn trong truy xuất và thiếu bảo mật.  
 
-Đề tài **"Quản lý khách sạn và khách đặt phòng"** được xây dựng nhằm ứng dụng cơ sở dữ liệu quan hệ để quản lý toàn diện hoạt động của một khách sạn: từ khách hàng, phòng, dịch vụ đến hóa đơn, giúp quy trình đặt phòng – thanh toán trở nên nhanh chóng, chính xác và hiện đại hơn.
+Đề tài **"Quản lý khách sạn"** được xây dựng nhằm ứng dụng cơ sở dữ liệu quan hệ để quản lý toàn diện hoạt động của một khách sạn: từ khách hàng, phòng, dịch vụ đến hóa đơn, giúp quy trình đặt phòng – thanh toán trở nên nhanh chóng, chính xác và hiện đại hơn.
 
 ---
 
