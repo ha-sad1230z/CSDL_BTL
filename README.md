@@ -1,4 +1,4 @@
-# Đề tài: Quản lý khách sạn và khách đặt phòng
+# Đề tài : Quản lý khách sạn
 
 ## 📌 Giới thiệu
 
