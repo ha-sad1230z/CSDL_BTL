@@ -26,6 +26,7 @@ Trong bối cảnh ngành du lịch – khách sạn ngày càng phát triển, 
   - KhachID int identity(1,1) primary key,
   - CCCD nvarchar(12) unique not null,
   - Hoten nvarchar(100) not null,
+  - gioitinh nvarchar(12) not null,
   - SDT nvarchar(10) not null,
   - email nvarchar(100),
   - diachi nvarchar(100)
