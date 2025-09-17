@@ -63,26 +63,7 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 
 ---
 
-## 🚀 Hướng dẫn cài đặt
-
-### Yêu cầu hệ thống
-- **Hệ quản trị CSDL**: SQL Server hoặc MySQL.
-- **Ngôn ngữ**: SQL.
-- (Tuỳ chọn) Có thể tích hợp với ứng dụng backend/frontend (FastAPI, Node.js, React, …).
-
----
-
-## 👥 Thành viên thực hiện phần 1, 2
-
-- Đỗ mạnh Hà
-- Lê Văn Nghệ
-- Nguyễn Hải Nam
-- Nguyễn Hoàng Tùng
-- Nguyễn Văn Trường
-
----
-
-## 📅 Tiến độ thực hiện
+## 📅 Các phần đã hoàn thành
 
 - **Phần 1:** Đặt vấn đề & đăng ký đề tài  
 - **Phần 2:** Mô tả kịch bản thế giới thực  
