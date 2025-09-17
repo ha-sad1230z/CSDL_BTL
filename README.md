@@ -1,86 +1,74 @@
-# Đề tài : Quản lý khách sạn
+# 🏨 Hệ thống Quản lý Khách sạn
 
 ## 📌 Giới thiệu
+Trong bối cảnh ngành du lịch – khách sạn ngày càng phát triển, việc quản lý khách sạn hiệu quả đóng vai trò quan trọng trong việc nâng cao chất lượng dịch vụ và tối ưu hóa nguồn lực.  
 
-Trong bối cảnh ngành du lịch – khách sạn ngày càng phát triển, việc quản lý khách sạn hiệu quả đóng vai trò quan trọng trong việc nâng cao chất lượng dịch vụ và tối ưu hóa nguồn lực. Trước kia, nhiều khách sạn còn quản lý thông tin bằng sổ sách hoặc file Excel thủ công, dễ xảy ra sai sót, thất lạc dữ liệu, khó khăn trong truy xuất và thiếu bảo mật.  
+Đề tài **“Quản lý khách sạn”** được xây dựng nhằm ứng dụng **cơ sở dữ liệu quan hệ (RDBMS)** để quản lý toàn diện hoạt động của một khách sạn: từ khách hàng, phòng, dịch vụ đến hóa đơn.  
 
-Đề tài **"Quản lý khách sạn"** được xây dựng nhằm ứng dụng cơ sở dữ liệu quan hệ để quản lý toàn diện hoạt động của một khách sạn: từ khách hàng, phòng, dịch vụ đến hóa đơn, giúp quy trình đặt phòng – thanh toán trở nên nhanh chóng, chính xác và hiện đại hơn.
+Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh chóng, chính xác và hiện đại hơn**, đồng thời hỗ trợ ban quản lý trong việc lập báo cáo, phân tích doanh thu, nâng cao trải nghiệm khách hàng.  
 
 ---
 
 ## 🎯 Mục tiêu hệ thống
 
-- Nâng cao hiệu quả quản lý thông tin khách hàng và đặt phòng.
-- Giảm thiểu sai sót khi đặt/hủy phòng.
-- Quản lý dịch vụ đi kèm (ăn uống, giặt ủi, spa,…) minh bạch, rõ ràng.
-- Tăng cường bảo mật dữ liệu khách hàng.
-- Hỗ trợ lập báo cáo doanh thu, tỷ lệ lấp đầy phòng, xu hướng đặt phòng.
-- Nâng cao trải nghiệm của khách hàng và khả năng cạnh tranh của khách sạn.
+### Mục tiêu chức năng
+- Quản lý thông tin khách hàng, phòng, dịch vụ, nhân viên.
+- Quản lý đặt phòng, hủy phòng, yêu cầu đặc biệt.
+- Quản lý dịch vụ đi kèm (ăn uống, giặt ủi, spa,…).
+- Lập hóa đơn và tính tổng chi phí.
+- Thống kê & báo cáo doanh thu, tỷ lệ lấp đầy phòng, dịch vụ phổ biến.
+
+### Mục tiêu phi chức năng
+- Tăng cường **bảo mật dữ liệu khách hàng**.
+- Đảm bảo **toàn vẹn dữ liệu** (tránh trùng lặp, mất mát).
+- Hỗ trợ **sao lưu & phục hồi dữ liệu**.
+- Cấu trúc **dễ mở rộng** và thân thiện với người dùng.
 
 ---
 
 ## 🏨 Kịch bản thế giới thực
 
 - Hệ thống quản lý khách sạn và khách đặt phòng sẽ bao gồm các nghiệp vụ sau:
-- KhachHang: lưu thông tin khách.
-  - KhachID int identity(1,1) primary key,
-  - CCCD nvarchar(12) unique not null,
-  - Hoten nvarchar(100) not null,
-  - gioitinh nvarchar(12) not null,
-  - SDT nvarchar(10) not null,
-  - email nvarchar(100),
-  - diachi nvarchar(100)
+- **KhachHang**: thông tin khách hàng : KhachHang (KhachHangID, CCCD, HoTen, GioiTinh, SDT, Email, DiaChi)
+- **Phong**: quản lý loại phòng, tình trạng, giá : Phong (PhongID, SoPhong, LoaiPhong, TinhTrang, GiaPhong)
+- **DatPhong**: gắn khách hàng với phòng, ngày nhận/trả : DatPhong (DatPhongID, KhachHangID, PhongID, NgayNhan, NgayTra, SoNguoi, YeuCauDacBiet)
+- **DichVu**: danh sách dịch vụ khách sạn cung cấp : DichVu (DichVuID, TenDichVu, Gia)
+- **SuDungDichVu**: lưu dịch vụ khách đã sử dụng : SuDungDichVu (SuDungID, DatPhongID, DichVuID, SoLuong)
+- **HoaDon**: hóa đơn cho từng đặt phòng : HoaDon (HoaDonID, DatPhongID, NgayLap, TongTien)
+- **NhanVien**: thông tin nhân viên & chức vụ : NhanVien (NhanVienID, CCCD, HoTen, SoDienThoai, ChucVu)
+
+---
   
-- Phong: quản lý loại phòng, tình trạng, giá.
-  - PhongID int identity(1,1) primary key,
-  - sophong nvarchar(100) unique not null,
-  - LoaiPhong NVARCHAR(20) CHECK (LoaiPhong IN (N'Đơn', N'Đôi', N'VIP')),
-  - TinhTrang NVARCHAR(20) CHECK (TinhTrang IN (N'Còn trống', N'Đã đặt', N'Đang dọn dẹp')),
-  - GiaPhong DECIMAL(9,2) NOT NULL
-  
-- DatPhong: gắn khách hàng với phòng, có ngày nhận/trả.
-  - DatPhongID INT IDENTITY(1,1) PRIMARY KEY,
-  - KhachHangID INT FOREIGN KEY REFERENCES KhachHang(KhachHangID),
-  - PhongID INT FOREIGN KEY REFERENCES Phong(PhongID),
-  - NgayNhan DATE NOT NULL,
-  - NgayTra DATE NOT NULL,
-  - SoNguoi INT,
-  - YeuCauDacBiet NVARCHAR(200)
-  
-- DichVu: các dịch vụ khách sạn cung cấp.
-  - DichVuID INT IDENTITY(1,1) PRIMARY KEY,
-  - TenDichVu NVARCHAR(100) NOT NULL,
-  - Gia DECIMAL(9,2) NOT NULL
-  
-- SuDungDichVu: bảng trung gian để ghi khách đã dùng dịch vụ nào, số lượng.
-  - SuDungID INT IDENTITY(1,1) PRIMARY KEY,
-  - DatPhongID INT FOREIGN KEY REFERENCES DatPhong(DatPhongID),
-  - DichVuID INT FOREIGN KEY REFERENCES DichVu(DichVuID),
-  - SoLuong INT DEFAULT 1
-  
-- HoaDon: mỗi đặt phòng có 1 hóa đơn, tổng tiền có thể tính dựa trên phòng + dịch vụ.
-  - HoaDonID INT IDENTITY(1,1) PRIMARY KEY,
-  - DatPhongID INT FOREIGN KEY REFERENCES DatPhong(DatPhongID),
-  - NgayLap DATE DEFAULT GETDATE(),
-  - TongTien DECIMAL(9,2)
-  
-- NhanVien: lưu thông tin nhân viên và chức vụ.
-  - NhanVienID INT IDENTITY(1,1) PRIMARY KEY,
-  - CCCD nvarchar(12) unique not null,
-  - HoTen NVARCHAR(100) NOT NULL,
-  - SoDienThoai VARCHAR(20),
-  - ChucVu NVARCHAR(50)
+## ⚙️ Các chức năng chính
+
+### 1. Quản lý dữ liệu
+- Thêm, sửa, xóa khách hàng, phòng, dịch vụ, nhân viên.
+- Quản lý đặt phòng, hủy phòng, yêu cầu đặc biệt.
+- Tạo và quản lý hóa đơn.
+
+### 2. Tra cứu dữ liệu
+- Tìm phòng trống theo ngày.
+- Xem lịch sử đặt phòng của khách.
+- Tìm dịch vụ phổ biến.
+
+### 3. Thống kê & báo cáo
+- Doanh thu theo tháng/quý/năm.
+- Tỷ lệ lấp đầy phòng.
+- Dịch vụ được sử dụng nhiều nhất.
+- Thống kê khách hàng theo độ tuổi/giới tính/quốc tịch.
+
+### 4. Quản lý & bảo mật
+- Phân quyền nhân viên theo chức vụ (lễ tân, quản lý, kế toán,…).
+- Sao lưu & phục hồi dữ liệu.
+
 ---
 
-## 🛠️ Các chức năng chính
+## 🚀 Hướng dẫn cài đặt
 
-- **Cập nhật dữ liệu:** thêm, sửa, xóa khách hàng, phòng, dịch vụ, nhân viên, đặt phòng, hóa đơn.
-- **Tra cứu dữ liệu:** tìm kiếm phòng trống theo ngày, tra cứu lịch sử đặt phòng của khách hàng, tìm kiếm dịch vụ phổ biến.
-- **Thống kê & báo cáo:**
-  - Báo cáo doanh thu theo tháng/quý/năm.
-  - Báo cáo tỷ lệ lấp đầy phòng.
-  - Thống kê dịch vụ sử dụng nhiều nhất.
-  - Thống kê khách hàng theo quốc tịch/độ tuổi/giới tính.
+### Yêu cầu hệ thống
+- **Hệ quản trị CSDL**: SQL Server hoặc MySQL.
+- **Ngôn ngữ**: SQL.
+- (Tuỳ chọn) Có thể tích hợp với ứng dụng backend/frontend (FastAPI, Node.js, React, …).
 
 ---
 
