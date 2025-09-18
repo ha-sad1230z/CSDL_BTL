@@ -29,13 +29,13 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 ## 🏨 Kịch bản thế giới thực
 
 - Hệ thống quản lý khách sạn và khách đặt phòng sẽ bao gồm các nghiệp vụ sau:
-- **KhachHang**: thông tin khách hàng : KhachHang (KhachHangID, CCCD, HoTen, GioiTinh, SDT, Email, DiaChi)
+- **KhachHang**: thông tin khách hàng : KhachHang (KhachHangID, CCCD, HoTenKhach, GioiTinh, SDT, Email, DiaChi)
 - **Phong**: quản lý loại phòng, tình trạng, giá : Phong (PhongID, SoPhong, LoaiPhong, TinhTrang, GiaPhongTrongNgay, GiaPhongQuaDem)
 - **SuDungPhong**: gắn khách hàng với phòng, ngày nhận/trả : SuDungPhong (SudungPhongID, KhachHangID, PhongID, NgayNhan, NgayTra, YeuCauDacBiet, TongTienPhong)
 - **DichVu**: danh sách dịch vụ khách sạn cung cấp : DichVu (DichVuID, TenDichVu, GiaDichVu)
 - **SuDungDichVu**: lưu dịch vụ khách đã sử dụng : SuDungDichVu (SuDungID, SuDungPhongID, DichVuID, SoLuong, TongTienDichVu)
 - **HoaDon**: hóa đơn cho từng đặt phòng : HoaDon (HoaDonID, SuDungPhongID, NgayLap, TongHoaDon)
-- **NhanVien**: thông tin nhân viên & chức vụ : NhanVien (NhanVienID, CCCD, HoTen, SoDienThoai, ChucVu)
+- **NhanVien**: thông tin nhân viên & chức vụ : NhanVien (NhanVienID, CCCD, HoTenNVien, SoDienThoai, ChucVu)
 
 ---
   
