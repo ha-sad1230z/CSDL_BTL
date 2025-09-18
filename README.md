@@ -12,7 +12,7 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 ## 🎯 Mục tiêu hệ thống
 
 ### Mục tiêu chức năng
-- Quản lý thông tin khách hàng, phòng, dịch vụ, nhân viên.
+- Quản lý thông tin khách hàng, phòng, dịch vụ.
 - Quản lý đặt phòng, hủy phòng, yêu cầu đặc biệt.
 - Quản lý dịch vụ đi kèm (ăn uống, giặt ủi, spa,…).
 - Lập hóa đơn và tính tổng chi phí.
@@ -35,14 +35,13 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 - **DichVu**: danh sách dịch vụ khách sạn cung cấp : DichVu (DichVuID, TenDichVu, GiaDichVu)
 - **SuDungDichVu**: lưu dịch vụ khách đã sử dụng : SuDungDichVu (SuDungID, SuDungPhongID, DichVuID, SoLuong, TongTienDichVu)
 - **HoaDon**: hóa đơn cho từng đặt phòng : HoaDon (HoaDonID, SuDungPhongID, NgayLap, TongHoaDon)
-- **NhanVien**: thông tin nhân viên & chức vụ : NhanVien (NhanVienID, CCCD, HoTenNVien, SoDienThoai, ChucVu)
 
 ---
   
 ## ⚙️ Các chức năng chính
 
 ### 1. Quản lý dữ liệu
-- Thêm, sửa, xóa khách hàng, phòng, dịch vụ, nhân viên.
+- Thêm, sửa, xóa khách hàng, phòng, dịch vụ.
 - Quản lý đặt phòng, hủy phòng, yêu cầu đặc biệt.
 - Tạo và quản lý hóa đơn.
 
@@ -56,10 +55,6 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 - Tỷ lệ lấp đầy phòng.
 - Dịch vụ được sử dụng nhiều nhất.
 - Thống kê khách hàng theo độ tuổi/giới tính/quốc tịch.
-
-### 4. Quản lý & bảo mật
-- Phân quyền nhân viên theo chức vụ (lễ tân, quản lý, kế toán,…).
-- Sao lưu & phục hồi dữ liệu.
 
 ---
 
