@@ -36,7 +36,7 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 - **DichVu**: danh sách dịch vụ khách sạn cung cấp : DichVu (DichVuID, TenDichVu, DonGia)
 - **SuDungDichVu**: lưu dịch vụ khách đã sử dụng theo đặt phòng : SuDungDichVu (DatPhongID, DichVuID, SoLuong)
 - **HoaDon**: thông tin hóa đơn thanh toán : HoaDon (HoaDonID, NgayLap, TongTien)
-- **ChiTietHoaDon**: lưu chi tiết hóa đơn theo từng đặt phòng : ChiTietHoaDon (HoaDonID, DatPhongID, ThanhTien)
+- **ChiTietHoaDon**: lưu chi tiết hóa đơn theo từng đặt phòng : ChiTietHoaDon (HoaDonID, DatPhongID, TongGiaPhong, TongGiaDichVu, ThanhTien)
 ---
   
 ## ⚙️ Các chức năng chính
