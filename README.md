@@ -29,6 +29,7 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 ## 🏨 Kịch bản thế giới thực 
 *Hệ thống quản lý khách sạn và khách đặt phòng sẽ bao gồm các nhóm chức năng để dễ tổ chức và triển khai hệ thống :*
 
+**Gốc**
 ---
 ## 1. Khách hàng & Phòng
 - **KhachHang**: quản lý khách hàng (tập cha)  
@@ -138,7 +139,6 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 - `KhachHang` ↔ `DanhGia`
 
 ---
-
 ## 📅 Các phần đã hoàn thành
 
 - **Phần 1:** Đặt vấn đề & đăng ký đề tài  
