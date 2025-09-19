@@ -113,7 +113,7 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 - **Thực thể Mạnh**: KhachHang, Phong, KhuyenMai, NguoiThanhToan, HoaDon, NhanVien, CaTruc, ThietBi, BaoCao, DichVuKhachSan, NhaCungCap, HopDong.
 - **Thực thể Yếu**: BaoTri, DichVuSuDung, DanhGia.
 - **Liên kết 3 ngôi**: DatPhong (KhachHang – Phong – KhuyenMai).
-
+- **Liên kết nhiều – nhiều**: PhanCong (NhanVien – CaTruc).
 ---
 
 
