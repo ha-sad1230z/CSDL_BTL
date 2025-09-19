@@ -57,10 +57,10 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 ### Nhân sự
 - **NhanVien**: thông tin nhân viên  
   `NhanVien (NhanVienID, HoTen, GioiTinh, NgaySinh, SDT, Email, DiaChi, ChucVu)`
-
 - **CaTruc**: ca làm việc  
-  `CaTruc (CaTrucID, NhanVienID, TenCa, NhiemVu, GioBatDau, GioKetThuc)`
-
+  `CaTruc (CaTrucID, TenCa, NhiemVu, GioBatDau, GioKetThuc)`
+- **PhanCong** : Phân công
+  `CaTruc (CaTrucID, NhanVienID, NgayPhanCong, GhiChu)`
 ---
 
 ### Thiết bị & Bảo trì
