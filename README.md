@@ -30,9 +30,15 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 *Hệ thống quản lý khách sạn và khách đặt phòng sẽ bao gồm các nhóm chức năng để dễ tổ chức và triển khai hệ thống :*
 
 ---
-### Khách hàng & Phòng
-- **KhachHang**: quản lý khách hàng  
-  `KhachHang (KhachHangID, CCCD, HoTen, GioiTinh, SDT, Email, DiaChi)`
+## 1. Khách hàng & Phòng
+- **KhachHang**: quản lý khách hàng (tập cha)  
+  `KhachHang (KhachHangID, SDT, Email, DiaChi, Loai)`
+
+- **KhachHangCaNhan**: khách hàng cá nhân (tập con)  
+  `KhachHangCaNhan (KhachHangID, CCCD, HoTen, GioiTinh, QuocTich)`
+
+- **KhachHangDoanhNghiep**: khách hàng doanh nghiệp (tập con)  
+  `KhachHangDoanhNghiep (KhachHangID, TenDoanhNghiep, TenNguoiDaiDien, LinhVucKinhDoanh)`
 
 - **Phong**: thông tin phòng  
   `Phong (PhongID, SoPhong, LoaiPhong, GiaPhong, TrangThai)`
@@ -40,51 +46,54 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 - **KhuyenMai**: chương trình khuyến mãi / mã giảm giá  
   `KhuyenMai (KhuyenMaiID, TenCT, TyLeGiam, NgayBatDau, NgayKetThuc)`
 
-- **DatPhong** *(liên kết 3 ngôi giữa KhachHang – Phong – KhuyenMai)*  
-  `DatPhong (KhachHangID, PhongID, KhuyenMaiID, NgayDat, NgayNhan, NgayTra, YeuCau, TrangThaiDat)`
+- **DatPhong**: liên kết 3 ngôi giữa KhachHang – Phong – KhuyenMai  
+  `DatPhong (DatPhongID, KhachHangID, PhongID, KhuyenMaiID NULL, NgayDat, NgayNhan, NgayTra, YeuCau, TrangThaiDat)`
 
 ---
 
-### Thanh toán
+## 2. Thanh toán
 - **NguoiThanhToan**: thông tin người/đơn vị thanh toán  
-  `NguoiThanhToan (NguoiTTID, HoTen, SDT, Email, DiaChi, Loai)`
+  `NguoiThanhToan (NguoiTTID, KhachHangID NULL, HoTen, SDT, Email, DiaChi, Loai)`
 
 - **HoaDon**: hóa đơn thanh toán  
   `HoaDon (HoaDonID, DatPhongID, NguoiTTID, TongTien, PTThanhToan, TinhTrangThanhToan, NgayThanhToan, GhiChu)`
 
 ---
 
-### Nhân sự
+## 3. Nhân sự
 - **NhanVien**: thông tin nhân viên  
   `NhanVien (NhanVienID, HoTen, GioiTinh, NgaySinh, SDT, Email, DiaChi, ChucVu)`
+
 - **CaTruc**: ca làm việc  
   `CaTruc (CaTrucID, TenCa, NhiemVu, GioBatDau, GioKetThuc)`
-- **PhanCong** : Phân công
-  `CaTruc (CaTrucID, NhanVienID, NgayPhanCong, GhiChu)`
+
+- **PhanCong**: phân công ca trực  
+  `PhanCong (CaTrucID, NhanVienID, NgayPhanCong, GhiChu)`
+
 ---
 
-### Thiết bị & Bảo trì
+## 4. Thiết bị & Bảo trì
 - **ThietBi**: danh mục thiết bị  
   `ThietBi (ThietBiID, TenThietBi)`
 
 - **BaoCao**: báo cáo sự cố hoặc tình trạng thiết bị  
   `BaoCao (BaoCaoID, ThietBiID, ViTri, MoTa, NgayBaoCao, NguoiBaoCao)`
 
-- **BaoTri** *(thực thể yếu, phụ thuộc ThietBi)*: lịch sử bảo trì  
+- **BaoTri**: lịch sử bảo trì (thực thể yếu, phụ thuộc ThietBi)  
   `BaoTri (BaoTriID, BaoCaoID NULL, ThietBiID, LoaiBaoTri, NgayBaoTri, ChiPhi, NoiDung)`
 
 ---
 
-### Dịch vụ khách sạn
+## 5. Dịch vụ khách sạn
 - **DichVuKhachSan**: dịch vụ cung cấp  
   `DichVuKhachSan (DichVuID, TenDichVu, GiaDichVu)`
 
-- **DichVuSuDung** *(thực thể yếu, phụ thuộc KhachHang & DichVuKhachSan)*  
+- **DichVuSuDung**: dịch vụ khách hàng đã sử dụng (thực thể yếu, phụ thuộc KhachHang & DichVuKhachSan)  
   `DichVuSuDung (SuDungID, KhachHangID, DichVuID, NgaySuDung, SoLuong, ThanhTien)`
 
 ---
 
-### Nhà cung cấp & Hợp đồng
+## 6. Nhà cung cấp & Hợp đồng
 - **NhaCungCap**: thông tin nhà cung cấp  
   `NhaCungCap (NCCID, TenNCC, LoaiHangHoa, SDT, DiaChi)`
 
@@ -93,9 +102,9 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 
 ---
 
-### Đánh giá
-- **DanhGia** *(thực thể yếu, phụ thuộc KhachHang)*  
-  `DanhGia (DanhGiaID, KhachHangID, PhongID, DichVuID, DiemSo, NhanXet)`
+## 7. Đánh giá
+- **DanhGia**: đánh giá của khách hàng (thực thể yếu, phụ thuộc KhachHang)  
+  `DanhGia (DanhGiaID, KhachHangID, PhongID NULL, DichVuID NULL, DiemSo, NhanXet)`
 
 ---
 
@@ -114,6 +123,7 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 - **Thực thể Yếu**: BaoTri, DichVuSuDung, DanhGia.
 - **Liên kết 3 ngôi**: DatPhong (KhachHang – Phong – KhuyenMai).
 - **Liên kết nhiều – nhiều**: PhanCong (NhanVien – CaTruc).
+- **Thực thể có quan hệ cha/con** : KhachHang(tập cha) , KhachHangCaNhan(tập con), KhachHangDoanhNghiep(tập con).
 ---
 
 
