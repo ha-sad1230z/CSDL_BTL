@@ -79,9 +79,7 @@ Hệ thống quản lý khách sạn sẽ hỗ trợ các thao tác:
 - **Thực thể mạnh**: Nguoi, KhachHang, NhanVien, Phong, DichVu, NhaHang, ThucDon, BoPhan, HoaDon, PhuongThucThanhToan, DanhGia, ThietBi
 - **Thực thể yếu**: DatPhong, LichSuDatPhong, SuDungDichVu, GoiMon, ThanhToanNhaHang, LichLamViec, SuaChua
 - **Liên kết 3 ngôi**: GoiMon (KhachHang – NhaHang – ThucDon)
-
-Quan hệ cha – con:
-Nguoi → KhachHang, NhanVien
+- **Quan hệ cha – con**: Nguoi → KhachHang, NhanVien
 ## 📅 Các phần đã hoàn thành
 
 - **Phần 1:** Đặt vấn đề & đăng ký đề tài  
