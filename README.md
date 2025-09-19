@@ -35,10 +35,10 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
   `KhachHang (KhachHangID, SDT, Email, DiaChi, Loai)`
 
 - **KhachHangCaNhan**: khách hàng cá nhân (tập con)  
-  `KhachHangCaNhan (KhachHangID, CCCD, HoTen, GioiTinh, QuocTich)`
+  `KhachHangCaNhan (KhachHangID, CCCD, HoTen, GioiTinh, NgaySinh, QuocTich)`
 
 - **KhachHangDoanhNghiep**: khách hàng doanh nghiệp (tập con)  
-  `KhachHangDoanhNghiep (KhachHangID, TenDoanhNghiep, TenNguoiDaiDien, LinhVucKinhDoanh)`
+  `KhachHangDoanhNghiep (KhachHangID, TenToChuc, MaSoThue, TenNguoiDaiDien, LinhVucKinhDoanh)`
 
 - **Phong**: thông tin phòng  
   `Phong (PhongID, SoPhong, LoaiPhong, GiaPhong, TrangThai)`
@@ -46,7 +46,7 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 - **KhuyenMai**: chương trình khuyến mãi / mã giảm giá  
   `KhuyenMai (KhuyenMaiID, TenCT, TyLeGiam, NgayBatDau, NgayKetThuc)`
 
-- **DatPhong**: liên kết 3 ngôi giữa KhachHang – Phong – KhuyenMai  
+- **DatPhong**: liên kết KhachHang – Phong – KhuyenMai  
   `DatPhong (DatPhongID, KhachHangID, PhongID, KhuyenMaiID NULL, NgayDat, NgayNhan, NgayTra, YeuCau, TrangThaiDat)`
 
 ---
@@ -56,7 +56,7 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
   `NguoiThanhToan (NguoiTTID, KhachHangID NULL, HoTen, SDT, Email, DiaChi, Loai)`
 
 - **HoaDon**: hóa đơn thanh toán  
-  `HoaDon (HoaDonID, DatPhongID, NguoiTTID, TongTien, PTThanhToan, TinhTrangThanhToan, NgayThanhToan, GhiChu)`
+  `HoaDon (HoaDonID, DatPhongID, NguoiTTID, NhanVienID, TongTien, PTThanhToan, TinhTrangThanhToan, NgayThanhToan, GhiChu)`
 
 ---
 
@@ -80,7 +80,7 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
   `BaoCao (BaoCaoID, ThietBiID, ViTri, MoTa, NgayBaoCao, NguoiBaoCao)`
 
 - **BaoTri**: lịch sử bảo trì (thực thể yếu, phụ thuộc ThietBi)  
-  `BaoTri (BaoTriID, BaoCaoID NULL, ThietBiID, LoaiBaoTri, NgayBaoTri, ChiPhi, NoiDung)`
+  `BaoTri (BaoTriID, BaoCaoID NULL, ThietBiID, NhanVienID, LoaiBaoTri, NgayBaoTri, ChiPhi, NoiDung)`
 
 ---
 
@@ -88,7 +88,7 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 - **DichVuKhachSan**: dịch vụ cung cấp  
   `DichVuKhachSan (DichVuID, TenDichVu, GiaDichVu)`
 
-- **DichVuSuDung**: dịch vụ khách hàng đã sử dụng (thực thể yếu, phụ thuộc KhachHang & DichVuKhachSan)  
+- **DichVuSuDung**: dịch vụ khách hàng đã sử dụng (thực thể yếu)  
   `DichVuSuDung (SuDungID, KhachHangID, DichVuID, NgaySuDung, SoLuong, ThanhTien)`
 
 ---
@@ -103,7 +103,7 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 ---
 
 ## 7. Đánh giá
-- **DanhGia**: đánh giá của khách hàng (thực thể yếu, phụ thuộc KhachHang)  
+- **DanhGia**: đánh giá của khách hàng (thực thể yếu)  
   `DanhGia (DanhGiaID, KhachHangID, PhongID NULL, DichVuID NULL, DiemSo, NhanXet)`
 
 ---
@@ -119,13 +119,25 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 ---
 
 ## 📊 Phân loại thực thể
+
 - **Thực thể Mạnh**: KhachHang, Phong, KhuyenMai, NguoiThanhToan, HoaDon, NhanVien, CaTruc, ThietBi, BaoCao, DichVuKhachSan, NhaCungCap, HopDong.
 - **Thực thể Yếu**: BaoTri, DichVuSuDung, DanhGia.
 - **Liên kết 3 ngôi**: DatPhong (KhachHang – Phong – KhuyenMai).
 - **Liên kết nhiều – nhiều**: PhanCong (NhanVien – CaTruc).
-- **Thực thể có quan hệ cha/con** : KhachHang(tập cha) , KhachHangCaNhan(tập con), KhachHangDoanhNghiep(tập con).
+- **Thực thể có quan hệ cha/con**: KhachHang (tập cha), KhachHangCaNhan (tập con), KhachHangDoanhNghiep (tập con).
 ---
 
+# 🔗 Quan hệ chính để tạo thành 1 khối
+- `KhachHang` ↔ `DatPhong` ↔ `Phong` ↔ `ThietBi`
+- `KhuyenMai` ↔ `DatPhong`
+- `DatPhong` ↔ `HoaDon` ↔ `NguoiThanhToan`
+- `NhanVien` ↔ `HoaDon`
+- `NhanVien` ↔ `BaoTri`
+- `HopDong` ↔ `ThietBi`
+- `KhachHang` ↔ `DichVuSuDung` ↔ `DichVuKhachSan`
+- `KhachHang` ↔ `DanhGia`
+
+---
 
 ## 📅 Các phần đã hoàn thành
 
