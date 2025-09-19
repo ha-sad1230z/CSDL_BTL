@@ -1,68 +1,79 @@
-# 🏨 Hệ thống Quản lý Khách sạn
+# 📘 Hệ thống Quản Lý Khách Sạn
 
-## 📌 Giới thiệu
-Trong bối cảnh ngành du lịch – khách sạn ngày càng phát triển, việc quản lý khách sạn hiệu quả đóng vai trò quan trọng trong việc nâng cao chất lượng dịch vụ và tối ưu hóa nguồn lực.  
+## I. Đặt Vấn Đề
 
-Đề tài **“Quản lý khách sạn”** được xây dựng nhằm ứng dụng **cơ sở dữ liệu quan hệ (RDBMS)** để quản lý toàn diện hoạt động của một khách sạn: từ khách hàng, phòng, dịch vụ đến hóa đơn.  
+Trong bối cảnh ngành du lịch và dịch vụ khách sạn ngày càng phát triển, việc quản lý hoạt động khách sạn một cách hiệu quả và chính xác là nhu cầu tất yếu. Trước đây, nhiều khách sạn vẫn còn quản lý theo phương pháp thủ công như sổ sách, giấy tờ hoặc các file rời rạc. Cách làm này dễ gây ra sai sót, thất thoát thông tin, khó khăn trong việc tra cứu và chia sẻ dữ liệu giữa các bộ phận. 
 
-Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh chóng, chính xác và hiện đại hơn**, đồng thời hỗ trợ ban quản lý trong việc lập báo cáo, phân tích doanh thu, nâng cao trải nghiệm khách hàng.  
+Do đó, việc xây dựng **hệ thống quản lý khách sạn** dựa trên cơ sở dữ liệu tập trung không chỉ giúp tự động hóa quy trình quản lý, mà còn mang lại sự tiện lợi trong điều hành, tiết kiệm chi phí và nâng cao trải nghiệm khách hàng.
 
----
+Hệ thống này cho phép:
+- Quản lý thông tin khách hàng, nhân viên và các bộ phận trong khách sạn.  
+- Quản lý đặt phòng, tình trạng phòng, dịch vụ sử dụng và hóa đơn thanh toán.  
+- Quản lý nhà hàng, gọi món, thanh toán ăn uống.  
+- Quản lý thiết bị, báo cáo sự cố và quá trình sửa chữa.  
+- Cung cấp báo cáo thống kê, hỗ trợ nhà quản lý đưa ra quyết định.  
 
-## 🎯 Mục tiêu hệ thống
-
-### Chức năng
-- Quản lý thông tin khách hàng, phòng và khuyến mãi.  
-- Hỗ trợ đặt phòng, hủy phòng, xử lý yêu cầu đặc biệt.  
-- Quản lý nhân viên, ca trực và phân công công việc.  
-- Ghi nhận, theo dõi và bảo trì thiết bị khách sạn.  
-- Cung cấp dịch vụ bổ sung (ăn uống, spa, giặt ủi,…).  
-- Xuất hóa đơn và quản lý thông tin thanh toán.  
-- Thống kê doanh thu, tỷ lệ lấp đầy phòng, dịch vụ phổ biến.  
-
-### Phi chức năng
-- Bảo mật thông tin khách hàng và giao dịch.  
-- Tránh dư thừa dữ liệu, đảm bảo ràng buộc khóa ngoại.  
-- Hỗ trợ sao lưu và phục hồi khi có sự cố.  
-- Thiết kế trực quan, dễ sử dụng và nâng cấp.  
----
-## 🏨 Kịch bản thế giới thực 
-*Hệ thống quản lý khách sạn và khách đặt phòng sẽ bao gồm các nhóm chức năng để dễ tổ chức và triển khai hệ thống :*
+🎯 **Mục tiêu của đề tài “Hệ thống Quản lý Khách Sạn”**:
+- Nâng cao hiệu quả quản lý thông tin khách sạn.  
+- Cải thiện chất lượng phục vụ và trải nghiệm của khách hàng.  
+- Tăng cường bảo mật, toàn vẹn dữ liệu.  
+- Hỗ trợ báo cáo, thống kê để phục vụ phân tích kinh doanh.  
+- Tối ưu chi phí vận hành và tăng khả năng phối hợp giữa các bộ phận.  
 
 ---
-## 1. Người
+## II. Phân Tích
+
+### 1. Mô tả “kịch bản thế giới thực”
+Ứng dụng của hệ cơ sở dữ liệu này là quản lý hoạt động khách sạn bao gồm: đặt phòng, sử dụng dịch vụ, thanh toán và quản lý nhân sự.  
+Hệ thống sẽ giúp:
+- Lưu trữ và quản lý thông tin khách hàng, nhân viên, phòng, dịch vụ, thiết bị.  
+- Hỗ trợ khách hàng đặt phòng nhanh chóng, sử dụng dịch vụ và thanh toán thuận tiện.  
+- Giúp nhân viên dễ dàng theo dõi lịch làm việc, quản lý phòng và xử lý sự cố.  
+- Giúp nhà quản lý theo dõi hoạt động kinh doanh, doanh thu và hiệu quả vận hành.
+---
+### 2. Yêu cầu về dữ liệu cần được lưu trữ
+### a. Các thông tin chính cần quản lý trong cơ sở dữ liệu khách sạn:
+#### 1. Người
 - **Người** : NguoiID, CCCD, HoTen, NgaySinh, GioiTinh, DiaChi, Sdt, email
 - **Khách Hàng** : KhachHangID, NguoiID, HangThanhVien, DiemTichLuy
 - **NhanVien** : NhanVienID, NguoiID, ChucVu, NgayVaoLam, Luong, BoPhanID
 ---
-## 2. Phòng và Đặt Phòng
+#### 2. Phòng và Đặt Phòng
 - **Phòng** : PhongID, SoPhong, LoaiPhong, GiaPhong, TrangThai
 - **Đặt Phòng** : DatPhongID, KhachHangID, PhongID, Ngay Dat, NgayNhan, NgayTra, TienCoc, TrangThai
 ---
-## 3. Dịch Vụ và Sử Dụng
+#### 3. Dịch Vụ và Sử Dụng
 - **Dịch Vụ** : DichVuID, TenDichVu, MoTa, DonGia
 - **SuDungDichVu** : SuDungID, KhachHangID, DichVuID, NgaySuDung, SoLuong, TongTien
 ---
-## 4. Nhà Hàng
+#### 4. Nhà Hàng
 - **Nhà hàng** : NhaHangID, TenNhaHang, ViTri, GioMoCua, GioDongCua
 - **Thực Đơn** : MonAnID, TenMon, MoTa
 - **Gọi Món** : GoiMonID, NhaHangID, MonAnID, KhachHangID, SoLuong, ThoiGianGoi, GhiChu, TrangThai, TongTien
 - **ThanhToanNhaHang** : ThanhToanID, GoiMonID, PhuongThuc, NgayThanhToan, TongTien
 ---
-## 5. Quản lý Nhân Sự
+#### 5. Quản lý Nhân Sự
 - **BoPhan** : BoPhanID, TenBoPhan, MoTa
 - **LichLamViec** : LichID, NhanVienID, NgayLam, CaLam
 ---
-## 6. Thanh Toán
+#### 6. Thanh Toán
 - **HoaDon** : HoaDonID, DatPhongID, NguoiThanhToan, NgayLap, TongTien, TinhTrang, PhuongThuc
 ---
-## 7. Đánh Giá
+#### 7. Đánh Giá
 - **DanhGia** : DanhGiaID, KhachHangID, NoiDung, SoSao, NgayDanhGia
 ---
-## 8. Thiết Bị và Sửa Chữa
+#### 8. Thiết Bị và Sửa Chữa
 - **ThietBi** : ThietBiID, TenThietBi, ViTri
 - **BaoCao** : BaoCaoID, ThietBiID, NhanVienID, PhongID (có thể trong phòng hoặc không), TinhTrang, MoTa
 - **SuaChua** : SuaChuaID, ThietBiID, NgaySua, ChiPhi
+---
+### b. Các thao tác chính trên hệ thống
+Hệ thống quản lý khách sạn sẽ hỗ trợ các thao tác:
+- **Cập nhật**: thêm/sửa thông tin khách hàng, nhân viên, phòng, dịch vụ, thiết bị.  
+- **Đặt phòng & thanh toán**: cho phép khách hàng đặt phòng, sử dụng dịch vụ và thanh toán.  
+- **Tra cứu**: tìm kiếm thông tin khách hàng, phòng trống, dịch vụ, hóa đơn.  
+- **Xem dữ liệu**: hiển thị danh sách khách hàng, phòng đang sử dụng, doanh thu theo ngày/tháng/năm.  
+- **Lập báo cáo**: doanh thu khách sạn, hiệu quả nhân viên, thống kê dịch vụ sử dụng nhiều nhất, tỷ lệ phòng trống.  
 ---
 ## 📅 Các phần đã hoàn thành
 
