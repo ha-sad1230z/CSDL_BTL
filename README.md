@@ -11,55 +11,111 @@ Hệ thống giúp quy trình đặt phòng – thanh toán trở nên **nhanh c
 
 ## 🎯 Mục tiêu hệ thống
 
-### Mục tiêu chức năng
-- Quản lý thông tin khách hàng, phòng, dịch vụ.
-- Quản lý đặt phòng, hủy phòng, yêu cầu đặc biệt.
-- Quản lý dịch vụ đi kèm (ăn uống, giặt ủi, spa,…).
-- Lập hóa đơn và tính tổng chi phí.
-- Thống kê & báo cáo doanh thu, tỷ lệ lấp đầy phòng, dịch vụ phổ biến.
+### Chức năng
+- Quản lý thông tin khách hàng, phòng và khuyến mãi.  
+- Hỗ trợ đặt phòng, hủy phòng, xử lý yêu cầu đặc biệt.  
+- Quản lý nhân viên, ca trực và phân công công việc.  
+- Ghi nhận, theo dõi và bảo trì thiết bị khách sạn.  
+- Cung cấp dịch vụ bổ sung (ăn uống, spa, giặt ủi,…).  
+- Xuất hóa đơn và quản lý thông tin thanh toán.  
+- Thống kê doanh thu, tỷ lệ lấp đầy phòng, dịch vụ phổ biến.  
 
-### Mục tiêu phi chức năng
-- Tăng cường **bảo mật dữ liệu khách hàng**.
-- Đảm bảo **toàn vẹn dữ liệu** (tránh trùng lặp, mất mát).
-- Hỗ trợ **sao lưu & phục hồi dữ liệu**.
-- Cấu trúc **dễ mở rộng** và thân thiện với người dùng.
+### Phi chức năng
+- Bảo mật thông tin khách hàng và giao dịch.  
+- Tránh dư thừa dữ liệu, đảm bảo ràng buộc khóa ngoại.  
+- Hỗ trợ sao lưu và phục hồi khi có sự cố.  
+- Thiết kế trực quan, dễ sử dụng và nâng cấp.  
+---
+## 🏨 Kịch bản thế giới thực 
+*Hệ thống quản lý khách sạn và khách đặt phòng sẽ bao gồm các nhóm chức năng để dễ tổ chức và triển khai hệ thống :*
+
+---
+### Khách hàng & Phòng
+- **KhachHang**: quản lý khách hàng  
+  `KhachHang (KhachHangID, CCCD, HoTen, GioiTinh, SDT, Email, DiaChi)`
+
+- **Phong**: thông tin phòng  
+  `Phong (PhongID, SoPhong, LoaiPhong, GiaPhong, TrangThai)`
+
+- **KhuyenMai**: chương trình khuyến mãi / mã giảm giá  
+  `KhuyenMai (KhuyenMaiID, TenCT, TyLeGiam, NgayBatDau, NgayKetThuc)`
+
+- **DatPhong** *(liên kết 3 ngôi giữa KhachHang – Phong – KhuyenMai)*  
+  `DatPhong (KhachHangID, PhongID, KhuyenMaiID, NgayDat, NgayNhan, NgayTra, YeuCau, TrangThaiDat)`
 
 ---
 
-## 🏨 Kịch bản thế giới thực
+### Thanh toán
+- **NguoiThanhToan**: thông tin người/đơn vị thanh toán  
+  `NguoiThanhToan (NguoiTTID, HoTen, SDT, Email, DiaChi, Loai)`
 
-- Hệ thống quản lý khách sạn và khách đặt phòng sẽ bao gồm các nghiệp vụ sau:
-- **KhachHang**: thông tin khách hàng : KhachHang (KhachHangID, CCCD, HoTen, GioiTinh, SDT, Email, DiaChi)
-- **NhanVien**: thông tin nhân viên khách sạn : NhanVien (NhanVienID, CCCD, HoTen, GioiTinh, SDT, ChucVu, Luong)
-- **Phong**: quản lý loại phòng, tình trạng, giá : Phong (PhongID, SoPhong, LoaiPhong, TinhTrang, GiaPhong)
-- **ChiTietPhong**: Quản lý trang thiết bị từng phòng : ChiTietPhong (PhongID, ThietBiID, TenThietBi, TinhTrang)
-- **DatPhong**: lưu thông tin đặt phòng của khách hàng : DatPhong (DatPhongID, KhachHangID, PhongID, NgayNhan, NgayTra)
-- **PhanCong**: phân công nhân viên phụ trách phòng cho khách trong thời gian đặt phòng : PhanCong (PhanCongID, NhanVienID, DatPhongID, NgayPhanCong, VaiTro)
-- **DichVu**: danh sách dịch vụ khách sạn cung cấp : DichVu (DichVuID, TenDichVu, DonGia)
-- **SuDungDichVu**: lưu dịch vụ khách đã sử dụng theo đặt phòng : SuDungDichVu (DatPhongID, DichVuID, SoLuong)
-- **HoaDon**: thông tin hóa đơn thanh toán : HoaDon (HoaDonID, NgayLap, TongTien)
-- **ChiTietHoaDon**: lưu chi tiết hóa đơn theo từng đặt phòng : ChiTietHoaDon (HoaDonID, DatPhongID, TongGiaPhong, TongGiaDichVu, ThanhTien)
----
-  
-## ⚙️ Các chức năng chính
-
-### 1. Quản lý dữ liệu
-- Thêm, sửa, xóa khách hàng, phòng, dịch vụ.
-- Quản lý đặt phòng, hủy phòng, yêu cầu đặc biệt.
-- Tạo và quản lý hóa đơn.
-
-### 2. Tra cứu dữ liệu
-- Tìm phòng trống theo ngày.
-- Xem lịch sử đặt phòng của khách.
-- Tìm dịch vụ phổ biến.
-
-### 3. Thống kê & báo cáo
-- Doanh thu theo tháng/quý/năm.
-- Tỷ lệ lấp đầy phòng.
-- Dịch vụ được sử dụng nhiều nhất.
-- Thống kê khách hàng theo độ tuổi/giới tính/quốc tịch.
+- **HoaDon**: hóa đơn thanh toán  
+  `HoaDon (HoaDonID, DatPhongID, NguoiTTID, TongTien, PTThanhToan, TinhTrangThanhToan, NgayThanhToan, GhiChu)`
 
 ---
+
+### Nhân sự
+- **NhanVien**: thông tin nhân viên  
+  `NhanVien (NhanVienID, HoTen, GioiTinh, NgaySinh, SDT, Email, DiaChi, ChucVu)`
+
+- **CaTruc**: ca làm việc  
+  `CaTruc (CaTrucID, NhanVienID, TenCa, NhiemVu, GioBatDau, GioKetThuc)`
+
+---
+
+### Thiết bị & Bảo trì
+- **ThietBi**: danh mục thiết bị  
+  `ThietBi (ThietBiID, TenThietBi)`
+
+- **BaoCao**: báo cáo sự cố hoặc tình trạng thiết bị  
+  `BaoCao (BaoCaoID, ThietBiID, ViTri, MoTa, NgayBaoCao, NguoiBaoCao)`
+
+- **BaoTri** *(thực thể yếu, phụ thuộc ThietBi)*: lịch sử bảo trì  
+  `BaoTri (BaoTriID, BaoCaoID NULL, ThietBiID, LoaiBaoTri, NgayBaoTri, ChiPhi, NoiDung)`
+
+---
+
+### Dịch vụ khách sạn
+- **DichVuKhachSan**: dịch vụ cung cấp  
+  `DichVuKhachSan (DichVuID, TenDichVu, GiaDichVu)`
+
+- **DichVuSuDung** *(thực thể yếu, phụ thuộc KhachHang & DichVuKhachSan)*  
+  `DichVuSuDung (SuDungID, KhachHangID, DichVuID, NgaySuDung, SoLuong, ThanhTien)`
+
+---
+
+### Nhà cung cấp & Hợp đồng
+- **NhaCungCap**: thông tin nhà cung cấp  
+  `NhaCungCap (NCCID, TenNCC, LoaiHangHoa, SDT, DiaChi)`
+
+- **HopDong**: hợp đồng với nhà cung cấp  
+  `HopDong (HopDongID, NCCID, NgayKy, GiaTri, NoiDung)`
+
+---
+
+### Đánh giá
+- **DanhGia** *(thực thể yếu, phụ thuộc KhachHang)*  
+  `DanhGia (DanhGiaID, KhachHangID, PhongID, DichVuID, DiemSo, NhanXet)`
+
+---
+
+## ⚙️ Quy trình nghiệp vụ minh họa
+1. Khách hàng đặt phòng → tạo bản ghi trong **DatPhong**.  
+2. Nếu có khuyến mãi, hệ thống liên kết với **KhuyenMai**.  
+3. Sau khi khách sử dụng dịch vụ và trả phòng → phát sinh **HoaDon**.  
+4. Người thanh toán có thể là chính khách, bạn bè hoặc công ty → lưu tại **NguoiThanhToan**.  
+5. Nhân viên tiếp nhận sự cố thiết bị → lập **BaoCao**, sau đó ghi nhận **BaoTri**.  
+6. Ban quản lý có thể xem báo cáo doanh thu, tình trạng phòng, lịch sử dịch vụ và bảo trì.  
+
+---
+
+## 📊 Phân loại thực thể
+- **Thực thể Mạnh**: KhachHang, Phong, KhuyenMai, NguoiThanhToan, HoaDon, NhanVien, CaTruc, ThietBi, BaoCao, DichVuKhachSan, NhaCungCap, HopDong.
+- **Thực thể Yếu**: BaoTri, DichVuSuDung, DanhGia.
+- **Liên kết 3 ngôi**: DatPhong (KhachHang – Phong – KhuyenMai).
+
+---
+
 
 ## 📅 Các phần đã hoàn thành
 
