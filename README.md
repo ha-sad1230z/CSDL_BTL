@@ -62,11 +62,6 @@ Hệ thống sẽ giúp:
 #### 7. Đánh Giá
 - **DanhGia** : DanhGiaID, KhachHangID, NoiDung, SoSao, NgayDanhGia
 ---
-#### 8. Thiết Bị và Sửa Chữa
-- **ThietBi** : ThietBiID, TenThietBi, ViTri
-- **BaoCao** : BaoCaoID, ThietBiID, NhanVienID, PhongID (có thể trong phòng hoặc không), TinhTrang, MoTa
-- **SuaChua** : SuaChuaID, ThietBiID, NgaySua, ChiPhi
----
 ### b. Các thao tác chính trên hệ thống
 Hệ thống quản lý khách sạn sẽ hỗ trợ các thao tác:
 - **Cập nhật**: thêm/sửa thông tin khách hàng, nhân viên, phòng, dịch vụ, thiết bị.  
@@ -76,8 +71,8 @@ Hệ thống quản lý khách sạn sẽ hỗ trợ các thao tác:
 - **Lập báo cáo**: doanh thu khách sạn, hiệu quả nhân viên, thống kê dịch vụ sử dụng nhiều nhất, tỷ lệ phòng trống.  
 ---
 ## Ghi Chú
-- **Thực thể mạnh**: Nguoi, KhachHang, NhanVien, Phong, DichVu, NhaHang, ThucDon, BoPhan, HoaDon, PhuongThucThanhToan, DanhGia, ThietBi
-- **Thực thể yếu**: DatPhong, LichSuDatPhong, SuDungDichVu, GoiMon, ThanhToanNhaHang, LichLamViec, SuaChua
+- **Thực thể mạnh**: Nguoi, KhachHang, NhanVien, Phong, DichVu, NhaHang, ThucDon, BoPhan, HoaDon, DanhGia
+- **Thực thể yếu**: DatPhong, SuDungDichVu, ThanhToanNhaHang, LichLamViec
 - **Liên kết 3 ngôi**: GoiMon (KhachHang – NhaHang – ThucDon)
 - **Quan hệ cha – con**: Nguoi → KhachHang, NhanVien
 ## 📅 Các phần đã hoàn thành
