@@ -34,7 +34,7 @@ Hệ thống sẽ giúp:
 ### 2. Yêu cầu về dữ liệu cần được lưu trữ
 ### a. Các thông tin chính cần quản lý trong cơ sở dữ liệu khách sạn:
 #### 1. Người
-- **Người** : NguoiID, CCCD, HoTen, NgaySinh, GioiTinh, DiaChi, Sdt, email
+- **Người** : NguoiID, CCCD, HoTen, NgaySinh, GioiTinh, DiaChi, Sdt, email, QuocTich
 - **Khách Hàng** : KhachHangID, NguoiID, HangThanhVien, DiemTichLuy
 - **NhanVien** : NhanVienID, NguoiID, ChucVu, NgayVaoLam, Luong, BoPhanID
 ---
