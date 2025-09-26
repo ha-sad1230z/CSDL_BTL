@@ -48,7 +48,7 @@ Hệ thống sẽ giúp:
 ---
 #### 4. Nhà Hàng
 - **Nhà hàng** : NhaHangID, TenNhaHang, ViTri, GioMoCua, GioDongCua
-- **Thực Đơn** : MonAnID, TenMon, MoTa
+- **MonAn** : NhaHangID, MonAnID, TenMon, MoTa
 - **Gọi Món** : GoiMonID, NhaHangID, MonAnID, KhachHangID, SoLuong, ThoiGianGoi, GhiChu, TrangThai, TongTien
 - **ThanhToanNhaHang** : ThanhToanID, GoiMonID, PhuongThuc, NgayThanhToan, TongTien
 ---
