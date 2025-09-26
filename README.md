@@ -49,7 +49,7 @@ Hệ thống sẽ giúp:
 #### 4. Nhà Hàng
 - **Nhà hàng** : NhaHangID, TenNhaHang, ViTri, GioMoCua, GioDongCua
 - **MonAn** : NhaHangID, MonAnID, TenMon, MoTa
-- **Gọi Món** : GoiMonID, NhaHangID, MonAnID, KhachHangID, SoLuong, ThoiGianGoi, GhiChu, TrangThai, TongTien
+- **Gọi Món** : GoiMonID, NhaHangID, MonAnID, KhachHangID, SoLuong, ThoiGianGoi, GhiChu, TrangThai
 - **ThanhToanNhaHang** : ThanhToanID, GoiMonID, PhuongThuc, NgayThanhToan, TongTien
 ---
 #### 5. Quản lý Nhân Sự
