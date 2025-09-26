@@ -71,9 +71,9 @@ Hệ thống quản lý khách sạn sẽ hỗ trợ các thao tác:
 - **Lập báo cáo**: doanh thu khách sạn, hiệu quả nhân viên, thống kê dịch vụ sử dụng nhiều nhất, tỷ lệ phòng trống.  
 ---
 ## Ghi Chú
-- **Thực thể mạnh**: Nguoi, KhachHang, NhanVien, Phong, DichVu, NhaHang, ThucDon, BoPhan, HoaDon, DanhGia
-- **Thực thể yếu**: DatPhong, SuDungDichVu, ThanhToanNhaHang, LichLamViec
-- **Liên kết 3 ngôi**: GoiMon (KhachHang – NhaHang – ThucDon)
+- **Thực thể mạnh**: Người, Khách Hàng, Nhân Viên, Phòng, Dịch Vụ, Nhà Hàng, Món Ăn, Bộ Phận, Hóa Đơn, Đánh Giá.
+- **Thực thể yếu**: Đặt Phòng, Sử Dụng Dịch Vụ, Gọi Món, Thanh Toán Nhà Hàng, Lịch Làm Việc.
+- **Liên kết 3 ngôi**: Gọi Món (Khách Hàng – Nhà Hàng – Món Ăn).
 - **Quan hệ cha – con**: Nguoi → KhachHang, NhanVien
 ## 📅 Các phần đã hoàn thành
 
