@@ -75,6 +75,16 @@ Hệ thống quản lý khách sạn sẽ hỗ trợ các thao tác:
 - **Thực thể yếu**: DatPhong, SuDungDichVu, ThanhToanNhaHang, LichLamViec
 - **Liên kết 3 ngôi**: GoiMon (KhachHang – NhaHang – ThucDon)
 - **Quan hệ cha – con**: Nguoi → KhachHang, NhanVien
+## III. Lược Đồ E-R
+
+
+### 1. Các ràng buộc và yêu cầu dữ liệu:
+## Các ràng buộc dữ liệu:
+-Mã định danh duy nhất (Khóa chính):
+
+- **Ghi chú**: Mỗi đối tượng trong hệ thống (Người, Khách hàng, Nhân viên, Phòng, Đặt phòng, Dịch vụ, Hóa đơn, …) đều cần có một mã duy nhất để phân biệt.
+- **Diễn giải**: Ràng buộc này đảm bảo không có hai đối tượng nào trùng mã. Việc này giúp hệ thống quản lý chính xác, không nhầm lẫn dữ liệu.
+
 ## 📅 Các phần đã hoàn thành
 
 - **Phần 1:** Đặt vấn đề & đăng ký đề tài  
